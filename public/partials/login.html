@@ -1,0 +1,36 @@
+	<div align="center" class="center-block" style="width:30%">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">Login</h3>
+			</div>
+
+			<div class="panel-body">
+				<form ng-submit="login(userLogin)">
+
+					<div class="form-group">
+						<label><i class="fa fa-user"></i> Username</label>
+						<input style="text-align:center" ng-model="userLogin.username" required class="form-control" type="text"></input>
+					</div>
+
+
+					<div class="form-group">
+						<label><i class="fa fa-key"></i> Password</label>
+						<input style="text-align:center" class="form-control" ng-model="userLogin.password" required type="password"></input>
+					</div>
+
+
+					<button type="submit" class="btn btn-primary">LOGIN <i ng-if="loading" class="fa fa-circle-o-notch fa-spin">	</i></button>
+					<a href="/#/register" class="btn btn-default">REGISTER</a>
+
+
+
+				</form>
+					<br ng-if="invalid">
+					<div ng-if="invalid" class="alert alert-danger" role="alert">
+  						<strong>Login failed</strong> Invalid username/password
+					</div>
+
+
+			</div>
+		</div>
+	</div>

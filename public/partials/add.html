@@ -1,0 +1,56 @@
+<div class="row">
+
+	<div class="col-md-4">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">Add exam</h3>
+			</div>
+
+			<div class="panel-body">
+				<form>
+					<div class="form-group">
+						<label>Name</label>
+						<input class="form-control" type="text" required ng-model="newExam.name"></input>
+					</div>
+
+					<div class="form-group">
+						<label>Credits</label>
+						<input class="form-control" type="number" required ng-model="newExam.credits"></input>
+					</div>
+
+					<div class="form-group">
+						<label>Mark</label>
+						<div class="input-group">
+							<input class="form-control" type="number" required ng-model="newExam.mark"></input>
+							<div class="input-group-addon">
+								Honor:
+								<select ng-model=newExam.honor ng-options="o.v as o.n for o in [{ n: 'No', v: false }, { n: 'Yes', v: true }]">
+								</select>
+							</div>
+						</div>
+					</div>
+
+					<button type="submit" ng-click="add()" class="btn btn-primary">Add <i ng-if="adding" class="fa fa-circle-o-notch fa-spin"></i>
+</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="col-md-8">
+		<p>
+			<h3>Projection</h3>
+			<p>
+				Weighted average: {{computeAverage(projectionExams).poundAverage}}
+			</p>
+			<p>
+				Arithmetic average: {{computeAverage(projectionExams).aritmAverage}}
+			</p>
+		</p>
+	</div>
+
+
+
+
+</div>

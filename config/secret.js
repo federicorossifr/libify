@@ -1,0 +1,1 @@
+module.exports = "mysupersecret"; //put here a random string used to salt tokens

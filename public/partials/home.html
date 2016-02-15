@@ -1,0 +1,93 @@
+<div class="row">
+	<div class="col-md-4">
+		<table class="table table-hover table-bordered">
+			<thead>
+				<th>Name</th>
+				<th>Credits</th>
+				<th>Mark</th>
+				<th>Honor</th>
+			</thead>
+
+			<tbody>
+				<tr class="clickable" ng-click="select($index)" ng-repeat="exam in exams track by $index">
+					<td>{{exam.name}}</td>
+					<td>{{exam.credits}}</td>
+					<td>{{exam.mark}}</td>
+					<td ng-if="exam.honor">Yes</td>
+					<td ng-if="!exam.honor">No</td>
+				</tr>
+			</tbody>
+
+
+			<tfoot>
+				<tr ng-if="exams.length">
+					<td>Weighted average</td>
+					<td>-</td>
+					<td>{{computeAverage(exams).poundAverage}}</td>
+					<td>-</td>
+				</tr>
+
+				<tr ng-if="exams.length">
+					<td>Arithmetic average</td>
+					<td>-</td>
+					<td>{{computeAverage(exams).aritmAverage}}</td>
+					<td>-</td>
+				</tr>
+			</tfoot>		
+		</table>
+	</div>
+
+	<div class="col-md-8">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">View Exam</h3>
+			</div>
+
+			<div class="panel-body">
+				<form ng-if="selected">
+					<div class="form-group">
+						<label>Name</label>
+						<input class="form-control" type="text" required ng-model="selected.name"></input>
+					</div>
+
+					<div class="form-group">
+						<label>Credits</label>
+						<input class="form-control" type="number" required ng-model="selected.credits"></input>
+					</div>
+
+					<div class="form-group">
+						<label>Mark</label>
+						<div class="input-group">
+							<input class="form-control" type="number" required ng-model="selected.mark"></input>
+							<div class="input-group-addon">
+								Honor:
+								<select ng-model=selected.honor ng-options="o.v as o.n for o in [{ n: 'No', v: false }, { n: 'Yes', v: true }]">
+								</select>
+							</div>
+						</div>
+					</div>
+
+					<button type="submit" ng-click="update(selected.name)" class="btn btn-primary">
+						Update 
+						<i ng-if="updating" class="fa fa-circle-o-notch fa-spin"></i>
+					</button>
+					<button type="submit" ng-click="delete(selected.name)" class="btn btn-danger">
+						Delete 
+						<i ng-if="deleting" class="fa fa-circle-o-notch fa-spin"></i>
+					</button>
+				</form>
+
+				<p ng-if="!selected">
+					Please, select an exam from the table first.
+				</p>
+
+
+			</div>
+
+		</div>
+	</div>
+
+
+
+
+</div>

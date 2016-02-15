@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Libify</title>
+
+	<!-- BOOTSTRAP CSS -->
+	<link rel="stylesheet" type="text/css" href="https://bootswatch.com/flatly/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="./stylesheets/style.css">
+	<link rel="stylesheet" type="text/css" href="./stylesheets/font-awesome.min.css">
+	<!-- JQUERY -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+
+	<!-- ANGULAR -->
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js"></script>
+
+
+	<!-- BOOTSTRAP JS -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</head>
+<body ng-app="libify" ng-controller="libifyController">
+	<header>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a href="/#/" class="navbar-brand"><i class="fa fa-book"  style="color:red"></i> Libify</a>
+				</div>
+
+
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li class="{{ menu.active }}" ng-repeat="menu in menus">
+							<a href="{{ menu.url }}"><i class="fa fa-{{menu.icon}}"></i> {{ menu.name }}</a>
+						</li>
+					</ul>
+
+					<ul class="nav navbar-nav navbar-right">
+						<li ng-if="authService.accessUsername" class="dropdown">
+							<a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ authService.accessUsername}}<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="javascript:void(0)" ng-click="logout()">Logout</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>			
+			</div>
+		</nav>
+	</header>
+
+
+	<div class="container-fluid" id="main" ng-view>
+		
+
+	</div>
+
+
+	<footer>
+		<div class="jumbotron">
+			<div class="container-fluid">
+				<h4>Made with <i class="fa fa-heart"></i></h4>
+				Federico Rossi
+			</div>
+		</div>
+	</footer>
+
+</body>
+
+<script type="text/javascript" src="./javascripts/app.js"></script>
+<script type="text/javascript" src="./javascripts/controllers/homeController.js"></script>
+<script type="text/javascript" src="./javascripts/controllers/addController.js"></script>
+<script type="text/javascript" src="./javascripts/controllers/loginController.js"></script>
+<script type="text/javascript" src="./javascripts/controllers/registerController.js"></script>
+
+</html>
