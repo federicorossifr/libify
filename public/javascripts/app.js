@@ -1,6 +1,6 @@
 var libifyApp = angular.module("libify",['ngRoute']);
 
-var BASE_URL = "http://libify.azurewebsites.net/";
+var BASE_URL = ""; //put here the root containing the node app e.g http://localhost:3333
 
 function setActiveVoice(menu,voice) {
 	for(var i = 0; i < menu.length; ++i) {
